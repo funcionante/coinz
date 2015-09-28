@@ -15,7 +15,7 @@
     <!-- AdminLTE Skins -->
     <link href="{{ asset("/admin-lte/dist/css/skins/skin-black.min.css") }}" rel="stylesheet" type="text/css" />
     <!-- Custom CSS -->
-    <link href="{{ asset("/css/css.css") }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("/css/custom.css") }}" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Auth;
+use DB;
+
 class CoinsController extends Controller
 {
     /**
@@ -15,7 +18,31 @@ class CoinsController extends Controller
      */
     public function index()
     {
-        return "All the coins.";
+        // Temporary!
+        $query = 'SELECT t1.id, t1.name_pt, t1.value, t1.commemorative, t1.img_front, t1.img_back, t2.user_id FROM
+                    (SELECT DISTINCT coins.id, countries.name_pt, coins.value, coins.commemorative, coins.img_front, coins.img_back
+                      FROM coins, countries, currencies
+                      WHERE
+                        currencies.id = 1
+                        AND coins.currency_id = currencies.id
+                        AND coins.country_id = countries.id
+                    ) t1
+                    LEFT JOIN
+                    (SELECT DISTINCT coins.id, copies.user_id
+                      FROM copies, coins, countries, currencies
+                      WHERE
+                        currencies.id = 1
+                        AND copies.user_id = ' . Auth::id() . '
+                        AND copies.coin_id = coins.id
+                        AND coins.currency_id = currencies.id
+                        AND coins.country_id = countries.id
+                    ) t2
+                    ON t1.id = t2.id
+                    ORDER BY t1.name_pt ASC, t1.commemorative ASC, t1.value DESC';
+
+        $coins = DB::select( DB::raw($query) );
+
+        return view('coins.index', compact('coins'));
     }
 
     /**

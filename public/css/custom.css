@@ -1,0 +1,20 @@
+/* Styles for images of coins */
+
+.coin-thumb {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    background-image: url("no_image.gif");
+    background-size: 80px 80px;
+}
+
+.coin-not-owned {
+    transition: all 0.5s;
+    opacity: 0.6;
+    -webkit-filter: grayscale(1);
+}
+
+.coin-not-owned:hover {
+    opacity: 1.0;
+    -webkit-filter: grayscale(0);
+}
