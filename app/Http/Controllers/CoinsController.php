@@ -42,7 +42,30 @@ class CoinsController extends Controller
 
         $coins = DB::select( DB::raw($query) );
 
-        return view('coins.index', compact('coins'));
+        # organize data from $coins to a bidimensional array,
+        # where the elements are the countries and each country has an array of coins.
+        foreach ($coins as $coin)
+        {
+            # in the first loop, create the first element
+            if (!isset($country))
+            {
+                $country = $coin->name_pt;
+                $data[$i = 0][] = $coin;
+            }
+            # when the country changes, create a new element
+            elseif ($coin->name_pt != $country)
+            {
+                $country = $coin->name_pt;
+                $data[++$i][] = $coin;
+            }
+            # in the other cases, append a new coin to the current country
+            else
+            {
+                $data[$i][] = $coin;
+            }
+        }
+
+        return view('coins.index')->with('data', $data);
     }
 
     /**
