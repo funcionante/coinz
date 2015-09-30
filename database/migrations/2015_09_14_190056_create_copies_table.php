@@ -16,7 +16,7 @@ class CreateCopiesTable extends Migration
             $table->increments('id');
             $table->integer('coin_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->date('year');
+            $table->integer('year');
             $table->tinyInteger('state');
             $table->text('observations');
             $table->string('img_front',30);

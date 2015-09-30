@@ -17,6 +17,9 @@ Route::get('about', 'PagesController@about');
 
 Route::resource('coins', 'CoinsController');
 
+Route::get('copies/create/{id}', 'CopiesController@create');
+Route::post('copies', 'CopiesController@store');
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',

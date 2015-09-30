@@ -36,4 +36,24 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * A user submits many coins.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function coins(){
+
+        return $this->hasMany('App\Coin');
+    }
+
+    /**
+     * A user owns many copies of coins.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function copies(){
+
+        return $this->hasMany('App\Copy');
+    }
 }

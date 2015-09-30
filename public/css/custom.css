@@ -18,3 +18,8 @@
     opacity: 1.0;
     -webkit-filter: grayscale(0);
 }
+
+.coin-full {
+    margin-bottom: 10px;
+
+}

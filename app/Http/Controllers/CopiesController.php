@@ -6,8 +6,22 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Copy;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
 class CopiesController extends Controller
 {
+    /**
+     * Create a new copies controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,28 +33,34 @@ class CopiesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new copy.
      *
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('copies.create', compact('id'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created copy in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $copy = new Copy($request->all());
+
+
+        Auth::user()->coins()->save($copy);
+
+        return Redirect::action('CoinsController@show', $request->coin_id);
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified copy.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -51,7 +71,7 @@ class CopiesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified copy.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -62,7 +82,7 @@ class CopiesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified copy in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -74,7 +94,7 @@ class CopiesController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified copy from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

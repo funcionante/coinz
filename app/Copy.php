@@ -14,6 +14,13 @@ class Copy extends Model
     protected $table = 'copies';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['coin_id', 'year', 'state', 'observations'];
+
+    /**
      * A copy is from a coin.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

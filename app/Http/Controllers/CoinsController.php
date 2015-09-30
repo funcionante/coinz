@@ -12,6 +12,16 @@ use DB;
 class CoinsController extends Controller
 {
     /**
+     * Create a new coins controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of all the coins.
      *
      * @return \Illuminate\Http\Response
@@ -97,7 +107,20 @@ class CoinsController extends Controller
      */
     public function show($id)
     {
-        //
+        $coin = DB::table('coins')
+            ->join('currencies', 'currencies.id', '=', 'coins.currency_id')
+            ->join('countries', 'countries.id', '=', 'coins.country_id')
+            ->select('coins.id', 'coins.value', 'coins.img_back', 'currencies.name as currency', 'countries.name_pt as country')
+            ->where('coins.id', '=', $id)
+            ->first();
+
+        $copies = DB::table('copies')
+            ->where('coin_id', '=', $id)
+            ->where('user_id', '=', Auth::id())
+            ->select('id', 'year', 'state', 'observations')
+            ->get();
+
+        return view('coins.show')->with(compact('coin', 'copies'));
     }
 
     /**
