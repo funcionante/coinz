@@ -37,7 +37,6 @@
 
             <div class="box-footer col-sm-10 col-sm-offset-2">
                 {!! Form::submit('Adicionar exemplar', ['class' => 'btn btn-default']) !!}
-
             </div>
 
         </div><!-- /.box-body -->

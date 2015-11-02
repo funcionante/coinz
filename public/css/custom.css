@@ -1,11 +1,11 @@
 /* Styles for images of coins */
 
 .coin-thumb {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     margin: 5px;
     background-image: url("no_image.gif");
-    background-size: 80px 80px;
+    background-size: 90px 90px;
 }
 
 .coin-not-owned {

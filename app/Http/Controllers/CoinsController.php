@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use App\Http\Requests\CreateCoinRequest;
 use App\Http\Controllers\Controller;
-
+use App\Country;
+use App\Coin;
 use Auth;
 use DB;
+use Image;
 
 class CoinsController extends Controller
 {
@@ -85,18 +87,44 @@ class CoinsController extends Controller
      */
     public function create()
     {
-        return "Form.";
+        $countries = Country::lists('name_pt', 'id');
+
+        return view('coins.create')->with(compact('countries'));
     }
 
     /**
      * Store a newly created coin in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param CreateCoinRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCoinRequest $request)
     {
-        //
+        $last_id = Coin::all("id")->last()->id;
+
+        $file_name = 'media/coins/' . ($last_id + 1) . '_back.jpg';
+
+        Image::make($request->file('img_back'))
+            ->resize(300, 300, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })
+            ->save($file_name);
+
+        $coin = new Coin();
+        $coin->currency_id = 1;
+        $coin->country_id = $request->country;
+        $coin->value = $request->value;
+        $coin->commemorative = $request->commemorative;
+        if ($coin->commemorative == null){
+            $coin->commemorative = 0;
+        }
+        $coin->description = $request->description;
+        $coin->img_back = $file_name;
+
+        Auth::user()->coins()->save($coin);
+
+        return Redirect::action('CoinsController@index');
     }
 
     /**
