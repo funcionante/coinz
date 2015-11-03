@@ -6,7 +6,7 @@ class CountryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     * The countries table is initialized with all the countries in the eurozone.
+     * The countries table is initialized with all the countries in the euro area.
      *
      * @return void
      */

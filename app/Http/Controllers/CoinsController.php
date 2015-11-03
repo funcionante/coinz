@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\CreateCoinRequest;
 use App\Http\Controllers\Controller;
 use App\Country;
@@ -87,7 +88,7 @@ class CoinsController extends Controller
      */
     public function create()
     {
-        $countries = Country::lists('name_pt', 'id');
+        $countries = Country::orderBy('name_pt')->lists('name_pt', 'id');
 
         return view('coins.create')->with(compact('countries'));
     }

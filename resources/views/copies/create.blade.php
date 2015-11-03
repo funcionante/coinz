@@ -23,8 +23,8 @@
             <div class="form-group">
                 {!! Form::label('state', 'Estado', ['class' => 'col-sm-2 control-label']) !!}
                 <div class="col-sm-10">
-                    {!! Form::input("number", 'state', null, ['min' => '1', 'max' => '5']) !!}
-                    <p class="help-block">(Opcional) Estado de conservação da moeda. (1 - muito mau / 5 - muito bom)</p>
+                    {!! Form::input('range', 'state', 5, ['min' => '0', 'max' => '10']) !!}
+                    <p class="help-block">(Opcional) Estado de conservação da moeda. A escala vai de 0 até 10.</p>
                 </div>
             </div>
             <div class="form-group">
