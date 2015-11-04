@@ -19,4 +19,14 @@ class Currency extends Model
      * @var array
      */
     protected $fillable = ['name', 'begin', 'end'];
+
+    /**
+     * A currency has many coins.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function coins(){
+
+        return $this->hasMany('App\Coin');
+    }
 }

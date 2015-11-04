@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Copy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class CopiesController extends Controller
 {
@@ -40,7 +41,9 @@ class CopiesController extends Controller
      */
     public function create($id)
     {
-        return view('copies.create', compact('id'));
+        //save the specified coin id in the session for the next request
+        Session::flash('coin_id', $id);
+        return view('copies.create');
     }
 
     /**
@@ -52,7 +55,7 @@ class CopiesController extends Controller
     public function store(Request $request)
     {
         $copy = new Copy($request->all());
-
+        $copy->coin_id = Session::get('coin_id');
 
         Auth::user()->coins()->save($copy);
 

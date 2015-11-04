@@ -24,7 +24,7 @@ class CreateCoinRequest extends Request
     public function rules()
     {
         return [
-            'country' => 'required',
+            'country_id' => 'required',
             'value' => 'required',
             'img_back' =>'image|mimes:jpg,png,gif'
         ];
@@ -38,7 +38,7 @@ class CreateCoinRequest extends Request
     public function messages()
     {
         return [
-            'country.required' => 'O país é obrigatório.',
+            'country_id.required' => 'O país é obrigatório.',
             'value.required' => 'O valor da moeda é obrigatório.',
             'img_back.image' => 'O ficheiro tem de ser uma imagem.',
             'img_back.mimes' => 'Apenas são permitidos imagens do tipo jpg, png e gif.',

@@ -6,7 +6,6 @@
 @section('content')
 
     <div class="row">
-
         <div class="col-xs-12">
 
             <div class="box box-default">
@@ -29,12 +28,66 @@
 
             <div class="box box-default">
                 <div class="box-header with-border">
+                    <h3 class="box-title">Créditos</h3>
+                </div>
+                <div class="box-body">
+                    <p>Esta aplicação foi desenvolvida em <a href="https://secure.php.net/" target="_blank">php</a>, utilizando <a href="http://laravel.com/" target="_blank">Laravel</a>. O design do site é baseado em <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>, tendo sido utilizado o tema <a href="https://shapebootstrap.net/item/1524915-adminlte-dashboard-and-control-panel" target="_blank">AdminLTE</a>. Obrigado ao <a href="https://www.linkedin.com/in/pcorado" target="_blank">Pedro</a> pelas suas sugestões.</p>
+                </div>
+            </div>
+
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Versões</h3>
+                </div>
+                <div class="box-body">
+                    <p>Atualmente o Coinz encontra-se em fase experimental, tendo apenas algumas funcionalidades básicas e muitos erros para corrigir.</p>
+                    <table class="table table-striped table-hover ">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Data</th>
+                            <th>Funcionalidades</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="info">
+                            <td>0.1 <span class="label label-warning">Alpha</span></td>
+                            <td>5 de Novembro de 2015</td>
+                            <td>
+                                <ul>
+                                    <li>Esquema e estrutura iniciais das páginas.</li>
+                                    <li>Sistemas de registo e login.</li>
+                                    <li>Registo de qualquer tipo de moeda de euro.</li>
+                                    <li>Visualização da coleção de moedas de cada utlizador.</li>
+                                    <li>Introdução de exemplares de moedas para cada utilizador.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.2</td>
+                            <td>Brevemente</td>
+                            <td>
+                                <ul>
+                                    <li>Possibilidade de editar e eliminar moedas.</li>
+                                    <li>Possibilidade de visualizar e editar perfil do utilizador.</li>
+                                    <li>Melhoria na validação da introdução de dados e mensagens de erro.</li>
+                                    <li>Melhorias gerais na funcionalidade das páginas.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table></div>
+            </div>
+
+            <div class="box box-default">
+                <div class="box-header with-border">
                     <h3 class="box-title">Licença</h3>
                 </div>
                 <div class="box-body">
                     <p>Este projeto utiliza a licença <a rel="license" href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache 2.0</a>.</p>
                 </div>
             </div>
+
         </div>
     </div>
 

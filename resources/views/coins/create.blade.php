@@ -25,9 +25,9 @@
                 </div>
             </div>
             <div class="form-group">
-                {!! Form::label('country', 'País', ['class' => 'col-sm-2 control-label']) !!}
+                {!! Form::label('country_id', 'País', ['class' => 'col-sm-2 control-label']) !!}
                 <div class="col-sm-10">
-                    {!! Form::select('country', $countries, null, ['class' => 'form-control', 'multiple']) !!}
+                    {!! Form::select('country_id', $countries, null, ['class' => 'form-control', 'multiple']) !!}
                 </div>
             </div>
             <div class="form-group">

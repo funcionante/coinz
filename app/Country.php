@@ -19,4 +19,14 @@ class Country extends Model
      * @var array
      */
     protected $fillable = ['name', 'name_pt'];
+
+    /**
+     * A country has many coins.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function coins(){
+
+        return $this->hasMany('App\Coin');
+    }
 }

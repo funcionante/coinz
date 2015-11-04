@@ -55,23 +55,23 @@ class CoinsController extends Controller
 
         $coins = DB::select( DB::raw($query) );
 
-        # organize data from $coins to a bidimensional array,
-        # where the elements are the countries and each country has an array of coins.
+        // Organize data from $coins to a bidimensional array,
+        // where the elements are the countries and each country has an array of coins.
         foreach ($coins as $coin)
         {
-            # in the first loop, create the first element
+            // In the first loop, create the first element.
             if (!isset($country))
             {
                 $country = $coin->name_pt;
                 $data[$i = 0][] = $coin;
             }
-            # when the country changes, create a new element
+            // When the country changes, create a new element.
             elseif ($coin->name_pt != $country)
             {
                 $country = $coin->name_pt;
                 $data[++$i][] = $coin;
             }
-            # in the other cases, append a new coin to the current country
+            // In the other cases, append a new coin to the current country.
             else
             {
                 $data[$i][] = $coin;
@@ -101,10 +101,13 @@ class CoinsController extends Controller
      */
     public function store(CreateCoinRequest $request)
     {
-        $last_id = Coin::all("id")->last()->id;
+        // The id will be the id from the last coin plus one.
+        $coin_id = Coin::all('id')->last()->id + 1;
 
-        $file_name = 'media/coins/' . ($last_id + 1) . '_back.jpg';
+        // The convention for image name of the coin is "id_back.jpg".
+        $file_name = 'media/coins/' . ($coin_id) . '_back.jpg';
 
+        // To unify all the images, they are limited to 300x300 pixels and converted to JPEG.
         Image::make($request->file('img_back'))
             ->resize(300, 300, function ($constraint) {
                 $constraint->aspectRatio();
@@ -112,20 +115,16 @@ class CoinsController extends Controller
             })
             ->save($file_name);
 
-        $coin = new Coin();
+        $coin = new Coin($request->all());
         $coin->currency_id = 1;
-        $coin->country_id = $request->country;
-        $coin->value = $request->value;
-        $coin->commemorative = $request->commemorative;
-        if ($coin->commemorative == null){
+        if ($request->commemorative == null){
             $coin->commemorative = 0;
         }
-        $coin->description = $request->description;
         $coin->img_back = $file_name;
 
         Auth::user()->coins()->save($coin);
 
-        return Redirect::action('CoinsController@index');
+        return Redirect::action('CoinsController@show', $coin_id);
     }
 
     /**
