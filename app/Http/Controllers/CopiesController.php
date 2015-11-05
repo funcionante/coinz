@@ -59,7 +59,7 @@ class CopiesController extends Controller
 
         Auth::user()->coins()->save($copy);
 
-        return Redirect::action('CoinsController@show', $request->coin_id);
+        return Redirect::action('CoinsController@show', Session::get('coin_id'));
     }
 
     /**

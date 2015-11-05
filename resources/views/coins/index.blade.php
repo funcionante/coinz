@@ -1,11 +1,11 @@
 @extends('app')
 
-@section('title', $title = 'A minha coleção')
-@section('description', 'Todas as moedas registadas.')
+@section('title', $title)
+@section('description', 'Todas as moedas do utilizador.')
 
 @section('content')
 
-    @foreach($data as $country)
+    @foreach($collection as $country)
 
         <div class="box box-default">
             <div class="box-header with-border">

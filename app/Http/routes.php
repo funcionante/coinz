@@ -11,9 +11,10 @@
 |
 */
 
-
 Route::get('/', 'PagesController@index');
 Route::get('about', 'PagesController@about');
+
+Route::get('user/{id}', 'CoinsController@userCollection');
 
 Route::resource('coins', 'CoinsController');
 

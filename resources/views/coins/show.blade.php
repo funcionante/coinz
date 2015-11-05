@@ -30,7 +30,7 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>#id</th>
+                                <th>ID</th>
                                 <th>Cunhagem</th>
                                 <th>Estado</th>
                                 <th>Observações</th>
@@ -40,8 +40,20 @@
                             @foreach($copies as $copy)
                                 <tr>
                                     <td>{{ $copy->id }}</td>
-                                    <td>{{ $copy->year }}</td>
-                                    <td>{{ $copy->state }}</td>
+                                    <td>
+                                        @if($copy->year != 0)
+                                            {{ $copy->year }}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($copy->state != -1)
+                                            {{ $copy->state }}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
                                     <td>{{ $copy->observations }}</td>
                                 </tr>
                             @endforeach

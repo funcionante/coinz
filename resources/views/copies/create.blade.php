@@ -19,9 +19,12 @@
             </div>
             <div class="form-group">
                 {!! Form::label('state', 'Estado', ['class' => 'col-sm-2 control-label']) !!}
-                <div class="col-sm-10">
-                    {!! Form::input('range', 'state', 5, ['min' => '0', 'max' => '10']) !!}
-                    <p class="help-block">(Opcional) Estado de conservação da moeda. A escala vai de 0 até 10.</p>
+                <div class="col-sm-9">
+                    {!! Form::input('range', 'state', -1, ['min' => '-1', 'max' => '10', 'onmousemove' => 'updateState()']) !!}
+                    <p class="help-block">(Opcional) Estado de conservação da moeda. Valores entre 0 e 10.</p>
+                </div>
+                <div class="col-sm-1">
+                    <p id="state-display">Vazio</p>
                 </div>
             </div>
             <div class="form-group">
@@ -40,5 +43,17 @@
 
         {!! Form::close() !!}
     </div><!-- /.box -->
+
+    <script>
+        function updateState() {
+            var state = document.getElementById('state').value;
+            var display = document.getElementById('state-display');
+
+            if(state == -1)
+                display.innerHTML = 'Vazio';
+            else
+                display.innerHTML = state;
+        }
+    </script>
 
 @endsection
