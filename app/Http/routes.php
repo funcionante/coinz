@@ -18,8 +18,8 @@ Route::get('user/{id}', 'CoinsController@userCollection');
 
 Route::resource('coins', 'CoinsController');
 
+Route::resource('copies', 'CopiesController');
 Route::get('copies/create/{id}', 'CopiesController@create');
-Route::post('copies', 'CopiesController@store');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

@@ -81,7 +81,10 @@ class CopiesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $copy = Copy::findOrFail($id);
+        Session::flash('coin_id', $id);
+
+        return view('copies.edit', compact('copy'));
     }
 
     /**
@@ -93,7 +96,10 @@ class CopiesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $copy = Copy::findOrFail($id);
+        $copy->update($request->all());
+
+        return Redirect::action('CoinsController@show', $copy->coin->id);
     }
 
     /**

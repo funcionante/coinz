@@ -9,15 +9,7 @@
         {!! Form::open(['action' => 'CoinsController@store', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
 
         <div class="box-body">
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @include('errors.list')
             <div class="form-group">
                 {!! Form::label('currency', 'Divisa', ['class' => 'col-sm-2 control-label']) !!}
                 <div class="col-sm-10">

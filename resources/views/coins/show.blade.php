@@ -55,6 +55,7 @@
                                         @endif
                                     </td>
                                     <td>{{ $copy->observations }}</td>
+                                    <td><a href="{{ action('CopiesController@edit', $copy->id) }}">editar</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -1,24 +1,20 @@
 @extends('app')
 
-@section('title', 'Novo exemplar')
+@section('title', 'Editar exemplar')
 @section('description', 'Adiciona um exemplar de uma moeda à coleção.')
 
 @section('content')
 
     <div class="box box-default">
-        {!! Form::open(['action' => ['CopiesController@store'], 'class' => 'form-horizontal']) !!}
+        {!! Form::model($copy, ['method' => 'PATCH', 'action' => ['CopiesController@update', $copy->id], 'class' => 'form-horizontal']) !!}
         <div class="box-body">
-            @include('copies._form', ['submitButtonText' => 'Adicionar Exemplar'])
+            @include('copies._form', ['submitButtonText' => 'Editar Exemplar'])
         </div>
         {!! Form::close() !!}
     </div>
 
     <script>
-        onload = function() {
-            document.getElementById('state').value = -1;
-            updateState()
-        };
-
+        onload = function() {updateState()};
         function updateState() {
             var state = document.getElementById('state').value;
             var display = document.getElementById('state-display');
