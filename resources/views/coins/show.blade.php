@@ -55,7 +55,12 @@
                                         @endif
                                     </td>
                                     <td>{{ $copy->observations }}</td>
-                                    <td><a href="{{ action('CopiesController@edit', $copy->id) }}">editar</a></td>
+                                    <td>
+                                        {!! Form::open(['action' => ['CopiesController@destroy', $copy->id], 'method' => 'DELETE']) !!}
+                                        <a href="{{ action('CopiesController@edit', $copy->id) }}"><span title="editar" class="glyphicon glyphicon-pencil btn btn-sm" aria-hidden="true"></span></a>
+                                        <a><span title="eliminar" class="glyphicon glyphicon-trash btn btn-sm" aria-hidden="true" onclick="parentNode.parentNode.submit()"></span></a>
+                                        {!! Form::close() !!}
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

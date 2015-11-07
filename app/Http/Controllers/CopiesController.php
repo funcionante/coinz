@@ -110,6 +110,10 @@ class CopiesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $copy = Copy::findOrFail($id);
+        $coin_id = $copy->coin->id;
+        $copy->delete();
+
+        return Redirect::action('CoinsController@show', $coin_id);
     }
 }

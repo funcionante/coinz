@@ -1,14 +1,14 @@
 @extends('app')
 
 @section('title', 'Editar exemplar')
-@section('description', 'Adiciona um exemplar de uma moeda à coleção.')
+@section('description', 'Edita os dados de um exemplar.')
 
 @section('content')
 
     <div class="box box-default">
         {!! Form::model($copy, ['method' => 'PATCH', 'action' => ['CopiesController@update', $copy->id], 'class' => 'form-horizontal']) !!}
         <div class="box-body">
-            @include('copies._form', ['submitButtonText' => 'Editar Exemplar'])
+            @include('copies._form', ['submitButtonText' => 'Guardar'])
         </div>
         {!! Form::close() !!}
     </div>
