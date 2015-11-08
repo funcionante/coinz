@@ -10,50 +10,7 @@
 
         <div class="box-body">
             @include('errors.list')
-            <div class="form-group">
-                {!! Form::label('currency', 'Divisa', ['class' => 'col-sm-2 control-label']) !!}
-                <div class="col-sm-10">
-                    {!! Form::select('currency', ['Euro'], null, ['class' => 'form-control', 'disabled']) !!}
-                </div>
-            </div>
-            <div class="form-group">
-                {!! Form::label('country_id', 'País', ['class' => 'col-sm-2 control-label']) !!}
-                <div class="col-sm-10">
-                    {!! Form::select('country_id', $countries, null, ['class' => 'form-control',]) !!}
-                </div>
-            </div>
-            <div class="form-group">
-                {!! Form::label('value', 'Valor', ['class' => 'col-sm-2 control-label']) !!}
-                <div class="col-sm-10">
-                    {!! Form::select('value', [2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01], null, ['class' => 'form-control']) !!}
-                </div>
-            </div>
-            <div class="form-group">
-                {!! Form::label('img_back', 'Imagem', ['class' => 'col-sm-2 control-label']) !!}
-                <div class="col-sm-10">
-                    {!! Form::file('img_back') !!}
-                    <p class="help-block">(Opcional) Imagem do verso da moeda.</p>
-                </div>
-            </div>
-            <div class="form-group">
-                {!! Form::label('commemorative', 'Tipo', ['class' => 'col-sm-2 control-label']) !!}
-                <div class="col-sm-10">
-                    {!! Form::checkbox('commemorative') !!} Comemorativa
-                    <p class="help-block">Indicar se for uma versão comemorativa.</p>
-                </div>
-            </div>
-            <div class="form-group">
-                {!! Form::label('description', 'Descrição', ['class' => 'col-sm-2 control-label']) !!}
-                <div class="col-sm-10">
-                    {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '3']) !!}
-                    <p class="help-block">(Opcional) Alguma informação extra sobre a moeda, como por exemplo o significado dos símbolos presentes.</p>
-                </div>
-            </div>
-
-            <div class="box-footer col-sm-10 col-sm-offset-2">
-                {!! Form::submit('Adicionar moeda', ['class' => 'btn btn-default']) !!}
-            </div>
-
+            @include('coins._form', ['submitButtonText' => 'Adicionar Moeda'])
         </div><!-- /.box-body -->
 
         {!! Form::close() !!}

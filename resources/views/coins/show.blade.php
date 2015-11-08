@@ -10,11 +10,16 @@
         <div class="col-md-3">
             <div class="box box-default">
                 <div class="box-body text-center">
-                    <img class="coin-full" src="{{ url($coin->img_back) }}" alt="Imagem da moeda">
+                    @if($coin->img_back != "")
+                        <img class="coin-full" src="{{ url($coin->img_back) }}" alt="Imagem da moeda">
+                    @endif
                     <table class="table table-striped">
                         <tr><td><b>Divisa</b></td><td>{{ $coin->currency }}</td></tr>
                         <tr><td><b>País</b></td><td>{{ $coin->country }}</td></tr>
                         <tr><td><b>Valor</b></td><td>&euro; {{ $coin->value }}</td></tr>
+                        @if($coin->commemorative)
+                            <tr><td colspan="2"><b>Comemorativa</b></td></tr>
+                        @endif
                     </table>
                 </div>
             </div>

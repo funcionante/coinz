@@ -44,7 +44,7 @@ class CoinsController extends Controller
     {
         $countries = Country::orderBy('name_pt')->lists('name_pt', 'id');
 
-        return view('coins.create')->with(compact('countries'));
+        return view('coins.create', compact('countries'));
     }
 
     /**
@@ -55,30 +55,28 @@ class CoinsController extends Controller
      */
     public function store(CreateCoinRequest $request)
     {
-        // The id will be the id from the last coin plus one.
-        $coin_id = Coin::all('id')->last()->id + 1;
-
-        // The convention for image name of the coin is "id_back.jpg".
-        $file_name = 'media/coins/' . ($coin_id) . '_back.jpg';
-
-        // To unify all the images, they are limited to 300x300 pixels and converted to JPEG.
-        Image::make($request->file('img_back'))
-            ->resize(300, 300, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })
-            ->save($file_name);
-
         $coin = new Coin($request->all());
-        $coin->currency_id = 1;
-        if ($request->commemorative == null){
-            $coin->commemorative = 0;
-        }
-        $coin->img_back = $file_name;
 
         Auth::user()->coins()->save($coin);
 
-        return Redirect::action('CoinsController@show', $coin_id);
+        $file = $request->file('img_back');
+        if($file != null) {
+            // The convention for image name of the coin is "id_back.jpg".
+            $file_name = 'media/coins/' . ($coin->id) . '_back.jpg';
+
+            // To unify all the images, they are limited to 300x300 pixels and converted to JPEG.
+            Image::make($request->file('img_back'))
+                ->resize(300, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })
+                ->save($file_name);
+
+            $coin->img_back = $file_name;
+            $coin->save();
+        }
+
+        return Redirect::action('CoinsController@show', $coin->id);
     }
 
     /**
@@ -92,7 +90,7 @@ class CoinsController extends Controller
         $coin = DB::table('coins')
             ->join('currencies', 'currencies.id', '=', 'coins.currency_id')
             ->join('countries', 'countries.id', '=', 'coins.country_id')
-            ->select('coins.id', 'coins.value', 'coins.img_back', 'currencies.name as currency', 'countries.name_pt as country')
+            ->select('coins.id', 'coins.value', 'coins.img_back', 'coins.commemorative', 'currencies.name as currency', 'countries.name_pt as country')
             ->where('coins.id', '=', $id)
             ->first();
 
