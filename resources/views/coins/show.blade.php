@@ -78,12 +78,18 @@
                     </div>
                 </div>
             @endif
-            <a href="{{ action('CoinsController@index') }}" class="btn btn-default btn-sm" role="button">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar à minha coleção
-            </a>
+
             <a href="{{ action('CopiesController@create', [$coin->id]) }}" class="btn btn-default btn-sm" role="button">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo exemplar
             </a>
+            <div class="pull-right">
+                <a href="{{ action('CoinsController@index') }}" class="btn btn-default btn-sm" role="button">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar à minha coleção
+                </a>
+                <a href="{{ action('CoinsController@edit', [$coin->id]) }}" class="btn btn-default btn-sm" role="button">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar moeda
+                </a>
+            </div>
         </div>
 
     </div>

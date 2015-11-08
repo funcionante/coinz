@@ -59,22 +59,7 @@ class CoinsController extends Controller
 
         Auth::user()->coins()->save($coin);
 
-        $file = $request->file('img_back');
-        if($file != null) {
-            // The convention for image name of the coin is "id_back.jpg".
-            $file_name = 'media/coins/' . ($coin->id) . '_back.jpg';
-
-            // To unify all the images, they are limited to 300x300 pixels and converted to JPEG.
-            Image::make($request->file('img_back'))
-                ->resize(300, 300, function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                })
-                ->save($file_name);
-
-            $coin->img_back = $file_name;
-            $coin->save();
-        }
+        $this->handleImage($coin, $request->file('img_back'));
 
         return Redirect::action('CoinsController@show', $coin->id);
     }
@@ -111,7 +96,10 @@ class CoinsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $coin = Coin::findOrFail($id);
+        $countries = Country::orderBy('name_pt')->lists('name_pt', 'id');
+
+        return view('coins.edit', compact('coin', 'countries'));
     }
 
     /**
@@ -123,7 +111,13 @@ class CoinsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $coin = Coin::findOrFail($id);
+
+        $coin->update($request->all());
+
+        $this->handleImage($coin, $request->file('img_back'));
+
+        return Redirect::action('CoinsController@show', $coin->id);
     }
 
     /**
@@ -195,5 +189,28 @@ class CoinsController extends Controller
         $title = 'Coleção de ' . User::find($id)->name;
 
         return view('coins.index', compact('collection', 'title'));
+    }
+
+    /** Save the image associated to a coin, if it exists.
+     *
+     * @param $coin
+     * @param $file
+     */
+    private function handleImage($coin, $file){
+        if($file != null) {
+            // The convention for image name of the coin is "id_back.jpg".
+            $file_name = 'media/coins/' . ($coin->id) . '_back.jpg';
+
+            // To unify all the images, they are limited to 300x300 pixels and converted to JPEG.
+            Image::make($file)
+                ->resize(300, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })
+                ->save($file_name);
+
+            $coin->img_back = $file_name;
+            $coin->save();
+        }
     }
 }

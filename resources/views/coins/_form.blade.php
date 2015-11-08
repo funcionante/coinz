@@ -26,6 +26,9 @@
 <div class="form-group">
     {!! Form::label('commemorative', 'Tipo', ['class' => 'col-sm-2 control-label']) !!}
     <div class="col-sm-10">
+        {{-- This will force the browser to send the commemorative value as zero if the box is unchecked. --}}
+        {!! Form::input('hidden', 'commemorative', 0)  !!}
+        <input id='commemorative' type='hidden' value="0" name='commemorative'>
         {!! Form::checkbox('commemorative') !!} Comemorativa
         <p class="help-block">Indicar se for uma versão comemorativa.</p>
     </div>
