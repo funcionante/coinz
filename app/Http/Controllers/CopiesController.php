@@ -115,11 +115,11 @@ class CopiesController extends Controller
     public function destroy($id)
     {
         $copy = Copy::findOrFail($id);
-        $coin_id = $copy->coin->id;
+        $coinId = $copy->coin->id;
         $copy->delete();
 
         Session::flash('alert_success', 'Exemplar eliminado com sucesso.');
 
-        return Redirect::action('CoinsController@show', $coin_id);
+        return Redirect::action('CoinsController@show', $coinId);
     }
 }

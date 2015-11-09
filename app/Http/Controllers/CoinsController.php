@@ -133,7 +133,13 @@ class CoinsController extends Controller
      */
     public function destroy($id)
     {
-        Coin::findOrFail($id)->delete();
+        $coin = Coin::findOrFail($id);
+
+        // delete image, if it exists
+        $file = $coin->img_back;
+        unlink($file);
+
+        $coin->delete();
 
         Session::flash('alert_success', 'Moeda eliminada com sucesso.');
 
@@ -203,22 +209,22 @@ class CoinsController extends Controller
     /** Save the image associated to a coin, if it exists.
      *
      * @param $coin
-     * @param $file
+     * @param $image
      */
-    private function handleImage($coin, $file){
-        if($file != null) {
+    private function handleImage($coin, $image){
+        if($image != null) {
             // The convention for image name of the coin is "id_back.jpg".
-            $file_name = 'media/coins/' . ($coin->id) . '_back.jpg';
+            $file = 'media/coins/' . ($coin->id) . '_back.jpg';
 
             // To unify all the images, they are limited to 300x300 pixels and converted to JPEG.
-            Image::make($file)
+            Image::make($image)
                 ->resize(300, 300, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })
-                ->save($file_name);
+                ->save($file);
 
-            $coin->img_back = $file_name;
+            $coin->img_back = $file;
             $coin->save();
         }
     }
