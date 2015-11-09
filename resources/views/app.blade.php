@@ -14,8 +14,8 @@
     <link href="{{ asset("/admin-lte/dist/css/AdminLTE.min.css") }}" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins -->
     <link href="{{ asset("/admin-lte/dist/css/skins/skin-black.min.css") }}" rel="stylesheet" type="text/css" />
-    <!-- Custom CSS -->
-    <link href="{{ asset("/css/custom.css") }}" rel="stylesheet" type="text/css" />
+    <!-- App CSS -->
+    <link href="{{ asset("/css/app.css") }}" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -67,6 +67,8 @@
 <script src="{{ asset ("/admin-lte/dist/js/app.min.js") }}" type="text/javascript"></script>
 <!-- Slimscroll -->
 <script src="{{ asset ("/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js") }}"></script>
+<!-- App JS -->
+<script src="{{ asset ("/js/app.js") }}"></script>
 
 </body>
 </html>

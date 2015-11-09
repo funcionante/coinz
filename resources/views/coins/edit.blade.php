@@ -1,7 +1,7 @@
 @extends('app')
 
-@section('title', 'Nova moeda')
-@section('description', 'Adiciona um novo tipo de moeda à base de dados.')
+@section('title', 'Editar moeda')
+@section('description', 'Edita os dados de uma moeda.')
 
 @section('content')
 

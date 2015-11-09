@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use App\Http\Requests\CreateCoinRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CoinRequest;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+
 use App\User;
 use App\Country;
 use App\Coin;
@@ -50,16 +51,18 @@ class CoinsController extends Controller
     /**
      * Store a newly created coin in storage.
      *
-     * @param CreateCoinRequest $request
+     * @param CoinRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCoinRequest $request)
+    public function store(CoinRequest $request)
     {
         $coin = new Coin($request->all());
 
         Auth::user()->coins()->save($coin);
 
         $this->handleImage($coin, $request->file('img_back'));
+
+        Session::flash('alert_success', 'Moeda adicionada com sucesso.');
 
         return Redirect::action('CoinsController@show', $coin->id);
     }
@@ -105,17 +108,19 @@ class CoinsController extends Controller
     /**
      * Update the specified coin in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CoinRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CoinRequest $request, $id)
     {
         $coin = Coin::findOrFail($id);
 
         $coin->update($request->all());
 
         $this->handleImage($coin, $request->file('img_back'));
+
+        Session::flash('alert_success', 'Moeda editada com sucesso.');
 
         return Redirect::action('CoinsController@show', $coin->id);
     }

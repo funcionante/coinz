@@ -26,6 +26,13 @@
         </div>
 
         <div class="col-md-9">
+
+            @if(Session::has('alert_success'))
+                <div class="alert alert-success" role="alert" id="alert">
+                    {{ session('alert_success') }}
+                </div>
+            @endif
+
             @if(count($copies) != 0)
                 <div class="box box-default">
                     <div class="box-header with-border">
