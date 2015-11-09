@@ -27,11 +27,7 @@
 
         <div class="col-md-9">
 
-            @if(Session::has('alert_success'))
-                <div class="alert alert-success" role="alert" id="alert">
-                    {{ session('alert_success') }}
-                </div>
-            @endif
+            @include('alerts._success')
 
             @if(count($copies) != 0)
                 <div class="box box-default">
@@ -68,10 +64,8 @@
                                     </td>
                                     <td>{{ $copy->observations }}</td>
                                     <td>
-                                        {!! Form::open(['action' => ['CopiesController@destroy', $copy->id], 'method' => 'DELETE']) !!}
-                                        <a href="{{ action('CopiesController@edit', $copy->id) }}"><span title="editar" class="glyphicon glyphicon-pencil btn btn-sm" aria-hidden="true"></span></a>
-                                        <a><span title="eliminar" class="glyphicon glyphicon-trash btn btn-sm" aria-hidden="true" onclick="parentNode.parentNode.submit()"></span></a>
-                                        {!! Form::close() !!}
+                                        <a href="{{ action('CopiesController@edit', $copy->id) }}" class="btn btn-sm glyphicon glyphicon-pencil" title="editar"></a>
+                                        <a href="{{ action('CopiesController@destroy', [$copy->id]) }}" data-confirm="Tens a certeza que queres eliminar este exemplar?" data-token="{{csrf_token()}}" data-method="delete" class="btn btn-sm glyphicon glyphicon-remove" title="eliminar exemplar"></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -86,19 +80,28 @@
                 </div>
             @endif
 
-            <a href="{{ action('CopiesController@create', [$coin->id]) }}" class="btn btn-default btn-sm" role="button">
+            <a href="{{ action('CoinsController@index') }}" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar à minha coleção
+            </a>
+            <a href="{{ action('CopiesController@create', [$coin->id]) }}" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo exemplar
             </a>
             <div class="pull-right">
-                <a href="{{ action('CoinsController@index') }}" class="btn btn-default btn-sm" role="button">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar à minha coleção
-                </a>
-                <a href="{{ action('CoinsController@edit', [$coin->id]) }}" class="btn btn-default btn-sm" role="button">
+                <a href="{{ action('CoinsController@edit', [$coin->id]) }}" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar moeda
+                </a>
+                <a href="{{ action('CoinsController@destroy', [$coin->id]) }}" data-confirm="Tens a certeza que queres eliminar esta moeda?" data-token="{{csrf_token()}}" data-method="delete" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar moeda
                 </a>
             </div>
         </div>
 
     </div>
+
+@endsection
+
+@section('scripts')
+
+    <script src="{{ asset ("/js/delete-request.js") }}"></script>
 
 @endsection

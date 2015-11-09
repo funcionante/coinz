@@ -69,6 +69,8 @@
 <script src="{{ asset ("/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js") }}"></script>
 <!-- App JS -->
 <script src="{{ asset ("/js/app.js") }}"></script>
+<!-- Any extra scripts -->
+@yield('scripts')
 
 </body>
 </html>

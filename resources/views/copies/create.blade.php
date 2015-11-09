@@ -13,6 +13,10 @@
         {!! Form::close() !!}
     </div>
 
+@endsection
+
+@section('scripts')
+
     <script>
         onload = function() {
             document.getElementById('state').value = -1;

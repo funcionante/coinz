@@ -133,7 +133,11 @@ class CoinsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Coin::findOrFail($id)->delete();
+
+        Session::flash('alert_success', 'Moeda eliminada com sucesso.');
+
+        return Redirect::action('CoinsController@index');
     }
 
     /**

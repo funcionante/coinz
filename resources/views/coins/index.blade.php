@@ -5,6 +5,8 @@
 
 @section('content')
 
+    @include('alerts._success')
+
     @foreach($collection as $country)
 
         <div class="box box-default">
