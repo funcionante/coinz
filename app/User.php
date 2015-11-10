@@ -42,8 +42,8 @@ class User extends Model implements AuthenticatableContract,
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function coins(){
-
+    public function coins()
+    {
         return $this->hasMany('App\Coin');
     }
 
@@ -52,8 +52,8 @@ class User extends Model implements AuthenticatableContract,
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function copies(){
-
+    public function copies()
+    {
         return $this->hasMany('App\Copy');
     }
 }

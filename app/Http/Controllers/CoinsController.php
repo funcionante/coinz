@@ -180,23 +180,19 @@ class CoinsController extends Controller
 
         // Organize data from $coins to a bidimensional array,
         // where the elements are the countries and each country has an array of coins.
-        foreach ($coins as $coin)
-        {
+        foreach ($coins as $coin) {
             // In the first loop, create the first element.
-            if (!isset($country))
-            {
+            if (!isset($country)) {
                 $country = $coin->name_pt;
                 $collection[$i = 0][] = $coin;
             }
             // When the country changes, create a new element.
-            elseif ($coin->name_pt != $country)
-            {
+            elseif ($coin->name_pt != $country) {
                 $country = $coin->name_pt;
                 $collection[++$i][] = $coin;
             }
             // In the other cases, append a new coin to the current country.
-            else
-            {
+            else {
                 $collection[$i][] = $coin;
             }
         }
@@ -211,7 +207,8 @@ class CoinsController extends Controller
      * @param $coin
      * @param $image
      */
-    private function handleImage($coin, $image){
+    private function handleImage($coin, $image)
+    {
         if($image != null) {
             // The convention for image name of the coin is "id_back.jpg".
             $file = 'media/coins/' . ($coin->id) . '_back.jpg';

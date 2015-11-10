@@ -25,8 +25,8 @@ class Copy extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function coin(){
-
+    public function coin()
+    {
         return $this->belongsTo('App\Coin');
     }
 
@@ -35,8 +35,8 @@ class Copy extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user(){
-
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 }

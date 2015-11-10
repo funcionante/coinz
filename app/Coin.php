@@ -25,8 +25,8 @@ class Coin extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function copies(){
-
+    public function copies()
+    {
         return $this->hasMany('App\Copy');
     }
 
@@ -35,8 +35,8 @@ class Coin extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user(){
-
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 
@@ -45,8 +45,8 @@ class Coin extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function country(){
-
+    public function country()
+    {
         return $this->belongsTo('App\Country');
     }
 
@@ -55,8 +55,8 @@ class Coin extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function currency(){
-
+    public function currency()
+    {
         return $this->belongsTo('App\Currency');
     }
 }

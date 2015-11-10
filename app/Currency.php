@@ -25,8 +25,8 @@ class Currency extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function coins(){
-
+    public function coins()
+    {
         return $this->hasMany('App\Coin');
     }
 }
