@@ -12,7 +12,6 @@
                         <div class="box-body">
                             @if (count($errors) > 0)
                                 <div class="alert alert-danger">
-                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
                                     <ul>
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
@@ -52,7 +51,7 @@
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-default">Entrar</button>
 
-                                        <!--<a class="btn btn-link" href="{{ url('/password/email') }}">Esqueceste-te da password?</a>-->
+                                        <a class="btn btn-link" href="{{ url('/password/email') }}">Esqueceste-te da password?</a>
                                     </div>
                                 </div>
                             </form>
