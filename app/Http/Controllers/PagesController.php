@@ -12,7 +12,8 @@ class PagesController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(){
+    public function index()
+    {
         return view('pages.index');
     }
 
@@ -20,7 +21,8 @@ class PagesController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function about(){
+    public function about()
+    {
         return view('pages.about');
     }
 }

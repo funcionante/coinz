@@ -25,3 +25,5 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('verify/{token}', 'VerificationController@verify');

@@ -1,1 +1,1 @@
-{{ $user }}, podes recuperar a tua password aqui: {{ url('password/reset/'.$token) }}.
+{{ $user }}, podes recuperar a tua password aqui: {{ url('password/reset/' . $token) }}.

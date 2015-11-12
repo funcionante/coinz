@@ -56,4 +56,22 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\Copy');
     }
+
+    /**
+     * Set verification_token field.
+     */
+    public function setVerificationToken()
+    {
+        $this->attributes['verification_token'] = str_random(30);
+    }
+
+    /**
+     * Set a user's account to verified state.
+     */
+    public function setVerified()
+    {
+
+        $this->attributes['level'] = 1;
+        $this->attributes['verification_token'] = null;
+    }
 }
