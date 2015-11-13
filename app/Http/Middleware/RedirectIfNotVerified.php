@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App;
 
-class AbortIfNotOwner
+class RedirectIfNotVerified
 {
     /**
      * Handle an incoming request.
@@ -16,12 +15,9 @@ class AbortIfNotOwner
      */
     public function handle($request, Closure $next)
     {
-        $id = $request->segment(2);
 
-        if ($request->is('copies/*')) {
-            if (is_null($request->user()->copies->find($id))) {
-                return App::abort(403);
-            }
+        if (!$request->user()->isVerified()) {
+            return view('verification.verify');
         }
 
         return $next($request);

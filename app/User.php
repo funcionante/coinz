@@ -74,4 +74,12 @@ class User extends Model implements AuthenticatableContract,
         $this->attributes['level'] = 1;
         $this->attributes['verification_token'] = null;
     }
+
+    /**
+     * Check if a user's account is verified.
+     */
+    public function isVerified()
+    {
+        return $this->attributes['level'] != 0;
+    }
 }
