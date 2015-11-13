@@ -9,7 +9,6 @@
         {!! Form::open(['action' => 'CoinsController@store', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
 
         <div class="box-body">
-            @include('errors.list')
             @include('coins._form', ['submitButtonText' => 'Adicionar Moeda'])
         </div><!-- /.box-body -->
 

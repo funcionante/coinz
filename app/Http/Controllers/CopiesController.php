@@ -61,7 +61,8 @@ class CopiesController extends Controller
 
         Auth::user()->coins()->save($copy);
 
-        Session::flash('alert_success', 'Exemplar adicionado com sucesso.');
+        Session::flash('alert-message', 'Exemplar adicionado com sucesso.');
+        Session::flash('alert-type', 'alert-success');
 
         return Redirect::action('CoinsController@show', Session::get('coin_id'));
     }
@@ -103,7 +104,8 @@ class CopiesController extends Controller
         $copy = Copy::findOrFail($id);
         $copy->update($request->all());
 
-        Session::flash('alert_success', 'Exemplar editado com sucesso.');
+        Session::flash('alert-message', 'Exemplar editado com sucesso.');
+        Session::flash('alert-type', 'alert-success');
 
         return Redirect::action('CoinsController@show', $copy->coin->id);
     }

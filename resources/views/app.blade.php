@@ -46,6 +46,12 @@
             <!-- Main content -->
             <section class="content">
 
+                <!-- Alerts -->
+                @include('alerts.show')
+
+                <!-- Errors -->
+                @include('errors.list')
+
                 <!-- Page Content Here -->
                 @yield('content')
 

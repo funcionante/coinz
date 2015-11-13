@@ -63,7 +63,8 @@ class CoinsController extends Controller
 
         $this->handleImage($coin, $request->file('img_back'));
 
-        Session::flash('alert_success', 'Moeda adicionada com sucesso.');
+        Session::flash('alert-message', 'Moeda adicionada com sucesso.');
+        Session::flash('alert-type', 'alert-success');
 
         return Redirect::action('CoinsController@show', $coin->id);
     }
@@ -121,7 +122,8 @@ class CoinsController extends Controller
 
         $this->handleImage($coin, $request->file('img_back'));
 
-        Session::flash('alert_success', 'Moeda editada com sucesso.');
+        Session::flash('alert-message', 'Moeda editada com sucesso.');
+        Session::flash('alert-type', 'alert-success');
 
         return Redirect::action('CoinsController@show', $coin->id);
     }

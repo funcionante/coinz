@@ -27,8 +27,6 @@
 
         <div class="col-md-9">
 
-            @include('alerts._success')
-
             @if(count($copies) != 0)
                 <div class="box box-default">
                     <div class="box-header with-border">

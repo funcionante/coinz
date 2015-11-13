@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Redirect;
+use Session;
 
 class RedirectIfNotVerified
 {
@@ -17,7 +19,9 @@ class RedirectIfNotVerified
     {
 
         if (!$request->user()->isVerified()) {
-            return view('verification.verify');
+            Session::flash('alert-message', 'Por favor verifica o teu email para poderes ativar a tua conta.');
+            Session::flash('alert-important', true);
+            return Redirect::back();
         }
 
         return $next($request);

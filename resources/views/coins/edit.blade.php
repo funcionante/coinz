@@ -9,7 +9,6 @@
         {!! Form::model($coin, ['method' => 'PATCH', 'action' => ['CoinsController@update', $coin->id], 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
 
         <div class="box-body">
-            @include('errors.list')
             @include('coins._form', ['submitButtonText' => 'Guardar'])
         </div>
 
