@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('title', 'Registar')
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -7,7 +9,7 @@
                 <div class="box box-default">
 
                     <div class="box-header with-border">
-                        <h3 class="box-title">Registar</h3></div>
+                        <h3 class="box-title">@yield('title')</h3></div>
                     <div class="box-body">
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">

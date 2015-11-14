@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', $title = 'Sobre')
+@section('title', 'Sobre')
 @section('description', 'Versão 0.1')
 
 @section('content')

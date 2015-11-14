@@ -1,11 +1,13 @@
 @extends('app')
 
+@section('title', 'Alterar Password')
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Alterar Password</div>
+                    <div class="panel-heading">@yield('title')</div>
                     <div class="panel-body">
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">

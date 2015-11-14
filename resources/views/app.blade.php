@@ -47,10 +47,10 @@
             <section class="content">
 
                 <!-- Alerts -->
-                @include('alerts.show')
+                @include('alerts._show')
 
                 <!-- Errors -->
-                @include('errors.list')
+                @include('errors._list')
 
                 <!-- Page Content Here -->
                 @yield('content')

@@ -13,12 +13,12 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
                     @if (!Auth::guest())
-                        <li class="@if(isset($title) && $title == 'Nova moeda') active @endif"><a href="{{ action('CoinsController@create') }}">Nova moeda <span class="sr-only">(current)</span></a></li>
-                        <li class="@if(isset($title) && $title == 'A minha coleção') active @endif"><a href="{{ action('CoinsController@index') }}">Ver coleção</a></li>
+                        <li class="@if( Request::path() == 'coins/create' ) active @endif"><a href="{{ action('CoinsController@create') }}">Nova moeda <span class="sr-only">(current)</span></a></li>
+                        <li class="@if( Request::path() == 'coins' ) active  @endif"><a href="{{ action('CoinsController@index') }}">Ver coleção</a></li>
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="@if(isset($title) && $title == 'Sobre') active @endif""><a href="{{ action('PagesController@about') }}">Sobre</a></li>
+                    <li class="@if( Request::path() == 'about' ) active @endif""><a href="{{ action('PagesController@about') }}">Sobre</a></li>
                     <li><a href="http://www.github.com/funcionante/coinz" target="_blank">GitHub</a></li>
                     @if (Auth::guest())
                         <li class="blue"><a href="{{ url('/auth/login') }}"><b>Entrar</b></a></li>

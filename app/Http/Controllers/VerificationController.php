@@ -30,7 +30,9 @@ class VerificationController extends Controller
 
             Auth::login($user);
 
-            Session::flash('alert_success', 'Conta ativada com sucesso.');
+            Session::flash('alert-message', 'Conta ativada com sucesso.');
+            Session::flash('alert-type', 'alert-success');
+            Session::flash('alert-important', true);
 
             return Redirect::action('CoinsController@index');
         }
