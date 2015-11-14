@@ -1,4 +1,4 @@
-@extends('app')
+@extends('default')
 
 @section('title', 'Editar moeda')
 @section('description', 'Edita os dados de uma moeda.')

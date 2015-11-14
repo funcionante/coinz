@@ -1,4 +1,4 @@
-@extends('app')
+@extends('default')
 
 @section('title', 'Nova moeda')
 @section('description', 'Adiciona um novo tipo de moeda à base de dados.')
@@ -10,9 +10,9 @@
 
         <div class="box-body">
             @include('coins._form', ['submitButtonText' => 'Adicionar Moeda'])
-        </div><!-- /.box-body -->
+        </div>
 
         {!! Form::close() !!}
-    </div><!-- /.box -->
+    </div>
 
 @endsection

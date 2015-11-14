@@ -1,4 +1,4 @@
-@extends('app')
+@extends('default')
 
 @section('title', 'Sobre')
 @section('description', 'Versão 0.1')

@@ -1,4 +1,4 @@
-@extends('app')
+@extends('default')
 
 @section('title', $title)
 @section('description', 'Todas as moedas do utilizador.')

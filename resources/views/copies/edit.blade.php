@@ -1,4 +1,4 @@
-@extends('app')
+@extends('default')
 
 @section('title', 'Editar exemplar')
 @section('description', 'Edita os dados de um exemplar.')

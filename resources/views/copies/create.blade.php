@@ -1,4 +1,4 @@
-@extends('app')
+@extends('default')
 
 @section('title', 'Novo exemplar')
 @section('description', 'Adiciona um exemplar de uma moeda à coleção.')
