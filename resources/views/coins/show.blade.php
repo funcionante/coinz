@@ -84,14 +84,18 @@
             <a href="{{ action('CopiesController@create', [$coin->id]) }}" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo exemplar
             </a>
-            <div class="pull-right">
-                <a href="{{ action('CoinsController@edit', [$coin->id]) }}" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar moeda
-                </a>
-                <a href="{{ action('CoinsController@destroy', [$coin->id]) }}" data-confirm="Tens a certeza que queres eliminar esta moeda?" data-token="{{csrf_token()}}" data-method="delete" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar moeda
-                </a>
-            </div>
+
+            @if(Request::user()->isManager())
+                <div class="pull-right">
+                    <a href="{{ action('CoinsController@edit', [$coin->id]) }}" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar moeda
+                    </a>
+                    <a href="{{ action('CoinsController@destroy', [$coin->id]) }}" data-confirm="Tens a certeza que queres eliminar esta moeda?" data-token="{{csrf_token()}}" data-method="delete" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar moeda
+                    </a>
+                </div>
+            @endif
+
         </div>
 
     </div>

@@ -13,7 +13,9 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
                     @if (!Auth::guest())
-                        <li class="@if( Request::path() == 'coins/create' ) active @endif"><a href="{{ action('CoinsController@create') }}">Nova moeda <span class="sr-only">(current)</span></a></li>
+                        @if(Request::user()->isManager())
+                            <li class="@if( Request::path() == 'coins/create' ) active @endif"><a href="{{ action('CoinsController@create') }}">Nova moeda <span class="sr-only">(current)</span></a></li>
+                        @endif
                         <li class="@if( Request::path() == 'coins' ) active  @endif"><a href="{{ action('CoinsController@index') }}">Ver coleção</a></li>
                     @endif
                 </ul>

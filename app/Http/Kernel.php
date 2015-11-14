@@ -31,5 +31,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'owner' => \App\Http\Middleware\AbortIfNotOwner::class,
         'verified' => \App\Http\Middleware\RedirectIfNotVerified::class,
+        'manager' => \App\Http\Middleware\AbortIfNotManager::class,
     ];
 }

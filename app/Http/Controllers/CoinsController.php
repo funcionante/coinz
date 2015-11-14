@@ -24,7 +24,8 @@ class CoinsController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => 'userCollection']);
-        $this->middleware('verified', ['except' => ['userCollection', 'index']]);
+        $this->middleware('verified', ['except' => ['index', 'userCollection']]);
+        $this->middleware('manager', ['except' => ['index', 'userCollection', 'show']]);
     }
 
     /**

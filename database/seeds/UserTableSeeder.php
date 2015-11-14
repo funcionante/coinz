@@ -16,6 +16,8 @@ class UserTableSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@admin.admin',
             'password' => Hash::make('admin'),
+            'level' => 2, // manager
+            'verification_token' => null,
         ];
 
         App\User::create($user);

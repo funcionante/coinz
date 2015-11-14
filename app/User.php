@@ -82,4 +82,12 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->attributes['level'] != 0;
     }
+
+    /**
+     * Check if a user is a manager.
+     */
+    public function isManager()
+    {
+        return $this->attributes['level'] > 1;
+    }
 }
