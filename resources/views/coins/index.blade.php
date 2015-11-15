@@ -1,7 +1,12 @@
 @extends('default')
 
 @section('title', $title)
-@section('description', 'Todas as moedas do utilizador.')
+
+@section('description')
+
+    Link de partilha: <a href="{{ $link }}" target="_blank">{{ $link }}</a>
+
+@endsection
 
 @section('content')
 

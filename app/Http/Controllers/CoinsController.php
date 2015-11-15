@@ -202,8 +202,9 @@ class CoinsController extends Controller
         }
 
         $title = 'Coleção de ' . User::find($id)->name;
+        $link = \Request::root() . '/user/' . + $id;
 
-        return view('coins.index', compact('collection', 'title'));
+        return view('coins.index', compact('collection', 'title', 'link'));
     }
 
     /** Save the image associated to a coin, if it exists.
