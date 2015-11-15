@@ -50,8 +50,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="info">
-                            <td>0.1 <span class="label label-warning">Alpha</span></td>
+                        <tr>
+                            <td>0.1</td>
                             <td>5 de Novembro de 2015</td>
                             <td>
                                 <ul>
@@ -64,14 +64,26 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>0.2</td>
+                            <td>0.2 <span class="label label-info">Atual</span></td>
+                            <td>16 de Novembro de 2015</td>
+                            <td>
+                                <ul>
+                                    <li>Possibilidade de editar e eliminar moedas e exemplares.</li>
+                                    <li>Melhoria na validação da introdução de dados.</li>
+                                    <li>Novas mensagens informativas mostradas ao utilizador.</li>
+                                    <li>Sistema de confirmação de email e de recuperação de password.</li>
+                                    <li>Dois níveis de utilizadores: normal e administrador.</li>
+                                    <li>Melhorias gerais na funcionalidade das páginas.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.3</td>
                             <td>Brevemente</td>
                             <td>
                                 <ul>
-                                    <li>Possibilidade de editar e eliminar moedas.</li>
                                     <li>Possibilidade de visualizar e editar perfil do utilizador.</li>
-                                    <li>Melhoria na validação da introdução de dados e mensagens de erro.</li>
-                                    <li>Melhorias gerais na funcionalidade das páginas.</li>
+                                    <li>...</li>
                                 </ul>
                             </td>
                         </tr>
