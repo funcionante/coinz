@@ -8,12 +8,13 @@
 
 <div class="form-group">
     {!! Form::label('state', 'Estado', ['class' => 'col-sm-2 control-label']) !!}
-    <div class="col-sm-9">
+    <div class="col-sm-10">
         {!! Form::input('range', 'state', null, ['min' => '-1', 'max' => '10', 'onmousemove' => 'updateState()']) !!}
-        <p class="help-block">(Opcional) Estado de conservação da moeda. Valores entre 0 e 10.</p>
-    </div>
-    <div class="col-sm-1">
-        <p id="state-display"></p>
+        <br>
+        <div class="well well-sm">
+            <span id="state-display"></span>
+        </div>
+        <p class="help-block">(Opcional) Estado de conservação da moeda. Valores entre 0 e 10. <a href="http://en.numista.com/numisdoc/coin-grades-58.html" target="_blank" class="btn btn-xs btn-default">Ver fonte</a></p>
     </div>
 </div>
 

@@ -17,17 +17,10 @@
 
 @section('scripts')
 
+    @include('copies._updateState')
+
     <script>
         onload = function() {updateState()};
-        function updateState() {
-            var state = document.getElementById('state').value;
-            var display = document.getElementById('state-display');
-
-            if(state == -1)
-                display.innerHTML = 'Vazio';
-            else
-                display.innerHTML = state;
-        }
     </script>
 
 @endsection
