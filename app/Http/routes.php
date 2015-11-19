@@ -27,3 +27,5 @@ Route::controllers([
 ]);
 
 Route::get('verify/{token}', 'VerificationController@verify');
+
+Route::controller('api', 'ApiController');
