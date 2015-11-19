@@ -21,7 +21,7 @@ class CountryTableSeeder extends Seeder
             ['Finland', 'Finlândia', 1],
             ['France', 'França', 1],
             ['Germany', 'Alemanha', 1],
-            ['Greece', 'Gŕecia', 1],
+            ['Greece', 'Grécia', 1],
             ['Ireland', 'Irlanda', 1],
             ['Italy', 'Itália', 1],
             ['Latvia', 'Letónia', 1],

@@ -207,7 +207,8 @@ class CoinsController extends Controller
         return view('coins.index', compact('collection', 'title', 'link'));
     }
 
-    /** Save the image associated to a coin, if it exists.
+    /**
+     * Save the image associated to a coin, if it exists.
      *
      * @param $coin
      * @param $image

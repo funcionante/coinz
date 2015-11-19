@@ -9,7 +9,7 @@
 <div class="form-group">
     {!! Form::label('state', 'Estado', ['class' => 'col-sm-2 control-label']) !!}
     <div class="col-sm-10">
-        {!! Form::input('range', 'state', null, ['min' => '-1', 'max' => '10', 'onmousemove' => 'updateState()', 'ontouchmove' => 'updateState()']) !!}
+        {!! Form::input('range', 'state', null, ['min' => '-1', 'max' => '10', 'oninput' => 'updateState()']) !!}
         <br>
         <div class="well well-sm">
             <span id="state-display"></span>
