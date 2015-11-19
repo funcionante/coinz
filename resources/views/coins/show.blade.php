@@ -73,13 +73,16 @@
             @else
                 <div class="box box-default">
                     <div class="box-body">
-                        Ainda não existem exemplares.
+                        Ainda não tens exemplares desta moeda.
                     </div>
                 </div>
             @endif
 
             <a href="{{ action('CoinsController@index') }}" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar à minha coleção
+            </a>
+            <a href="{{ action('CoinsController@index') . '#' . $coin->country }}" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon glyphicon-th" aria-hidden="true"></span> Todas as moedas deste país
             </a>
             <a href="{{ action('CopiesController@create', [$coin->id]) }}" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo exemplar
