@@ -50,7 +50,7 @@
 
     <script>
 
-        $.get("api/countries", function(countries) {
+        $.get("{{ Request::root() }}" + "/api/countries", function(countries) {
 
             // For each letter in the alphabet
             for(var letter = 'A'; letter <= "Z"; letter = nextChar(letter)) {

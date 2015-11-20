@@ -3,7 +3,11 @@
     <nav class="navbar navbar-static-top">
         <div class="container">
             <div class="navbar-header">
-                <a href="{{ action('PagesController@index') }}" class="navbar-brand"><b>COINZ</b></a>
+                @if (!Auth::guest())
+                    <a href="{{ action('PagesController@home') }}" class="navbar-brand"><b>COINZ</b></a>
+                @else
+                    <a href="{{ action('PagesController@index') }}" class="navbar-brand"><b>COINZ</b></a>
+                @endif
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
