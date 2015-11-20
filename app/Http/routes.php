@@ -13,6 +13,7 @@
 
 Route::get('/', 'PagesController@index');
 Route::get('about', 'PagesController@about');
+Route::get('home', 'PagesController@home');
 
 Route::get('user/{id}', 'CoinsController@userCollection');
 

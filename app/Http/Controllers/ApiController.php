@@ -16,6 +16,6 @@ class ApiController extends Controller
      */
     public function getCountries()
     {
-        return DB::table('countries')->lists('name_pt');
+        return DB::table('countries')->orderBy('name_pt')->lists('name_pt');
     }
 }

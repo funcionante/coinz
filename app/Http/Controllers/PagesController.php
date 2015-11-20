@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -24,5 +25,19 @@ class PagesController extends Controller
     public function about()
     {
         return view('pages.about');
+    }
+
+    /** Show the home page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function home()
+    {
+
+        $coins = DB::table('coins')->count();
+        $copies = DB::table('copies')->count();
+        $users = DB::table('users')->count();
+
+        return view('pages.home', compact('coins', 'copies', 'users'));
     }
 }
