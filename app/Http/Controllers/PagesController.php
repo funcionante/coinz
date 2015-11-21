@@ -37,6 +37,7 @@ class PagesController extends Controller
 
         $nCoins = DB::table('coins')->count();
         $nCopies = DB::table('copies')->count();
+        $nCopiesUser = Auth::user()->copies()->count();
         $nUsers = DB::table('users')->count();
 
         $coins = DB::table('coins')
@@ -55,6 +56,6 @@ class PagesController extends Controller
             ->take(5)
             ->get(['coins.id', 'coins.value', 'currencies.name as currency', 'countries.name_pt as country', 'copies.created_at as date']);
 
-        return view('pages.home', compact('nCoins', 'nCopies', 'nUsers', 'coins', 'copies'));
+        return view('pages.home', compact('nCoins', 'nCopies', 'nCopiesUser', 'nUsers', 'coins', 'copies'));
     }
 }

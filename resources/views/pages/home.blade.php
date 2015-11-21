@@ -7,11 +7,11 @@
 
     <div class="row">
 
-        <div class="col-lg-4 col-xs-6">
-            <div class="small-box bg-green-gradient">
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-red-gradient">
                 <div class="inner">
                     <h3>{{ $nCoins }}</h3>
-                    <p>Total de moedas</p>
+                    <p>Moedas registadas</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-book"></i>
@@ -19,30 +19,41 @@
             </div>
         </div>
 
-        <div class="col-lg-4 col-xs-6">
-            <div class="small-box bg-yellow-gradient">
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-green-gradient">
                 <div class="inner">
                     <h3>{{ $nCopies }}</h3>
-                    <p>Total de exemplares</p>
+                    <p>Exemplares adicionados</p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-star"></i>
+                    <i class="fa fa-copy"></i>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-4 col-xs-6">
-            <div class="small-box bg-red-gradient">
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-blue-gradient">
+                <div class="inner">
+                    <h3>{{ $nCopiesUser }}</h3>
+                    <p>Exemplares adicionados por ti</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-yellow-gradient">
                 <div class="inner">
                     <h3>{{ $nUsers }}</h3>
-                    <p>Total de utilizadores</p>
+                    <p>Utilizadores registados</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-users"></i>
                 </div>
             </div>
         </div>
-
 
     </div>
 
@@ -81,7 +92,7 @@
         <div class="col-lg-6">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">As tuas últimas moedas</h3>
+                    <h3 class="box-title">Os teus exemplares mais recentes</h3>
                 </div>
                 <div class="box-body">
                     <table class="table table-striped">
