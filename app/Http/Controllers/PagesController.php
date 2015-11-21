@@ -10,6 +10,18 @@ use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
+
+    /**
+     * Create a new pages controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest', ['only' => 'index']);
+        $this->middleware('auth', ['only' => 'home']);
+    }
+
     /** Show the main page of this app.
      *
      * @return \Illuminate\View\View

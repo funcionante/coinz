@@ -69,7 +69,8 @@
                             @endforeach
                             </tbody>
                         </table>
-                    </div></div>
+                    </div>
+                </div>
             @else
                 <div class="box box-default">
                     <div class="box-body">
@@ -81,7 +82,7 @@
             <a href="{{ action('CoinsController@index') . '#' . $coin->country }}" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar à minha coleção
             </a>
-            <a href="{{ action('CopiesController@create', [$coin->id]) }}" class="btn btn-info btn-sm">
+            <a href="{{ action('CopiesController@create', [$coin->id]) }}" class="btn btn-primary btn-sm">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo exemplar
             </a>
 

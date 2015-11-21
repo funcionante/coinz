@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title', 'Sobre')
-@section('description', 'Versão 0.1')
+@section('description', 'Versão 0.2')
 
 @section('content')
 

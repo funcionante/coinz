@@ -27,5 +27,5 @@
 </div>
 
 <div class="box-footer col-sm-10 col-sm-offset-2">
-    {!! Form::submit($submitButtonText, ['class' => 'btn btn-default']) !!}
+    {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary']) !!}
 </div>

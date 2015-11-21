@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <div class="col-md-7 col-md-offset-4">
-                <button type="submit" class="btn btn-default">
+                <button type="submit" class="btn btn-primary">
                     Recuperar password
                 </button>
             </div>

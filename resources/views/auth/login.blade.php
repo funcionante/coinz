@@ -33,7 +33,7 @@
 
         <div class="form-group">
             <div class="col-md-7 col-md-offset-4">
-                <button type="submit" class="btn btn-default">Entrar</button>
+                <button type="submit" class="btn btn-primary">Entrar</button>
             </div>
         </div>
     </form>
