@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
@@ -34,10 +35,26 @@ class PagesController extends Controller
     public function home()
     {
 
-        $coins = DB::table('coins')->count();
-        $copies = DB::table('copies')->count();
-        $users = DB::table('users')->count();
+        $nCoins = DB::table('coins')->count();
+        $nCopies = DB::table('copies')->count();
+        $nUsers = DB::table('users')->count();
 
-        return view('pages.home', compact('coins', 'copies', 'users'));
+        $coins = DB::table('coins')
+            ->join('currencies', 'currencies.id', '=', 'coins.currency_id')
+            ->join('countries', 'countries.id', '=', 'coins.country_id')
+            ->orderBy('coins.created_at', 'desc')
+            ->take(5)
+            ->get(['coins.id', 'coins.value', 'currencies.name as currency', 'countries.name_pt as country', 'coins.created_at as date']);
+
+
+        $copies = Auth::user()->copies()
+            ->join('coins', 'coins.id', '=', 'copies.coin_id')
+            ->join('currencies', 'currencies.id', '=', 'coins.currency_id')
+            ->join('countries', 'countries.id', '=', 'coins.country_id')
+            ->orderBy('copies.created_at', 'desc')
+            ->take(5)
+            ->get(['coins.id', 'coins.value', 'currencies.name as currency', 'countries.name_pt as country', 'copies.created_at as date']);
+
+        return view('pages.home', compact('nCoins', 'nCopies', 'nUsers', 'coins', 'copies'));
     }
 }
