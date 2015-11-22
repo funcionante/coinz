@@ -90,4 +90,29 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->attributes['level'] > 1;
     }
+
+    /**
+     * Get the user's level.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getLevelAttribute($value)
+    {
+        if ($value == 2)
+            return "Administrador";
+
+        return "Utilizador";
+    }
+
+    /**
+     * Get the user's registration date.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getCreatedAtAttribute($value)
+    {
+        return date("d/m/Y", strtotime($value));
+    }
 }
