@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class UsersController extends Controller
+class UsersController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -31,8 +31,9 @@ class UsersController extends Controller
         $user = User::findorFail($id, ['name', 'email', 'level', 'created_at']);
 
         $user->nCoins = Auth::user()->copies()->count();
+        $collection = $this->getUserCollection(Auth::id());
 
-        return view('users.show', compact('user'));
+        return view('users.show', compact('user', 'collection'));
     }
 
     /**

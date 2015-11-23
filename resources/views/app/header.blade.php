@@ -20,7 +20,7 @@
                         @if(Request::user()->isManager())
                             <li class="@if( Request::path() == 'coins/create' ) active @endif"><a href="{{ action('CoinsController@create') }}">Nova moeda <span class="sr-only">(current)</span></a></li>
                         @endif
-                        <li class="@if( Request::path() == 'coins' ) active  @endif"><a href="{{ action('CoinsController@index') }}">Ver coleção</a></li>
+                        <li class="@if( Request::path() == 'coins' ) active  @endif"><a href="{{ action('CoinsController@index') }}">Gerir coleção</a></li>
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -33,6 +33,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <b>{{ Auth::user()->name }}</b> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ action('UsersController@show', Auth::id()) }}">Ver perfil</a></li>
                                 <li><a href="{{ url('/auth/logout') }}">Sair</a></li>
                             </ul>
                         </li>
