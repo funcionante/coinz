@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class UsersController extends ApiController
 {
@@ -21,14 +23,14 @@ class UsersController extends ApiController
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified user's profile.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getProfile($id)
     {
-        $user = User::findorFail($id, ['name', 'email', 'level', 'created_at']);
+        $user = User::findorFail($id, ['id', 'name', 'email', 'level', 'created_at']);
 
         $user->nCoins = Auth::user()->copies()->count();
         $collection = $this->getUserCollection(Auth::id());
@@ -37,26 +39,29 @@ class UsersController extends ApiController
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the authenticated user.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getEdit()
     {
-        //
+        return view('users.edit')->with(['user' => Auth::user()]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function patchUpdate(Request $request)
     {
-        //
+        Auth::user()->update($request->all());
+
+        Session::flash('alert-message', 'Perfil editado com sucesso.');
+        Session::flash('alert-type', 'alert-success');
+
+        return Redirect::action('UsersController@getProfile', Auth::user()->id);
     }
 
     /**

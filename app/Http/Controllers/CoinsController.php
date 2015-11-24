@@ -36,7 +36,7 @@ class CoinsController extends ApiController
     public function index()
     {
         $collection = $this->getUserCollection(Auth::id());
-        $link = action('UsersController@show', Auth::id());
+        $link = action('UsersController@getProfile', Auth::id());
 
         return view('coins.index', compact('collection', 'title', 'link'));
     }

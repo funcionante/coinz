@@ -1,0 +1,26 @@
+@extends('default')
+
+@section('title', 'Editar perfil')
+@section('description', 'Edita os teus dados.')
+
+@section('content')
+
+    <div class="box box-default">
+        {!! Form::model($user, ['method' => 'PATCH', 'action' => ['UsersController@patchUpdate'], 'class' => 'form-horizontal']) !!}
+        <div class="box-body">
+            <div class="form-group">
+                {!! Form::label('name', 'Nome', ['class' => 'col-sm-2 control-label']) !!}
+                <div class="col-sm-10">
+                    {!! Form::input("text", 'name') !!}
+                    <p class="help-block">O teu nome ou alcunha.</p>
+                </div>
+            </div>
+
+            <div class="box-footer col-sm-10 col-sm-offset-2">
+                {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+            </div>
+        </div>
+        {!! Form::close() !!}
+    </div>
+
+@endsection

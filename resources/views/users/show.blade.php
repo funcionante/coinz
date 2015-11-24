@@ -7,6 +7,13 @@
 
     <div class="box box-widget widget-user">
         <div class="widget-user-header bg-aqua-active">
+            @if(Request::user()->id == $user->id)
+                <div class="pull-right">
+                    <a href="{{ action('UsersController@getEdit') }}" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar perfil
+                    </a>
+                </div>
+            @endif
             <h3 class="widget-user-username">{{ $user->name }}</h3>
             <h5 class="widget-user-desc">{{ $user->level }}</h5>
         </div>

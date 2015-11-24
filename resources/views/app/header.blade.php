@@ -33,7 +33,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <b>{{ Auth::user()->name }}</b> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ action('UsersController@show', Auth::id()) }}">Ver perfil</a></li>
+                                <li><a href="{{ action('UsersController@getProfile', Auth::id()) }}">Ver perfil</a></li>
                                 <li><a href="{{ url('/auth/logout') }}">Sair</a></li>
                             </ul>
                         </li>
