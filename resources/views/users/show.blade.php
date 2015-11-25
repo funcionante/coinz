@@ -18,11 +18,7 @@
             <h5 class="widget-user-desc">{{ $user->level }}</h5>
         </div>
         <div class="widget-user-image">
-            @if($user->avatar != null)
-                <img class="img-circle" src="{{ url($user->avatar) }}" alt="Imagem de perfil">
-            @else
-                <img class="img-circle" src="{{  asset('/media/users/0.png') }}" alt="Sem imagem de perfil">
-            @endif
+            <img class="img-circle" src="{{ url($user->avatar) }}" alt="Imagem de perfil">
         </div>
         <div class="box-footer">
             <div class="row">

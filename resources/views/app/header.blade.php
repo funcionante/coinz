@@ -30,16 +30,35 @@
                         <li class="blue"><a href="{{ url('/auth/login') }}"><b>Entrar</b></a></li>
                         <li><a href="{{ url('/auth/register') }}"><b>Registar</b></a></li>
                     @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <b>{{ Auth::user()->name }}</b> <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ action('UsersController@getProfile', Auth::id()) }}">Ver perfil</a></li>
-                                <li><a href="{{ url('/auth/logout') }}">Sair</a></li>
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="{{ url(Auth::user()->avatar) }}" class="user-image" alt="User Image">
+                                <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="{{ url(Auth::user()->avatar) }}" class="img-circle" alt="User Image">
+                                    <p>
+                                        {{ Auth::user()->level}}
+                                        <small>Membro desde {{ Auth::user()->created_at }}</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="{{ action('UsersController@getProfile', Auth::id()) }}" class="btn btn-default btn-flat">Ver Perfil</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="{{ url('/auth/logout') }}" class="btn btn-default btn-flat">Sair</a>
+                                    </div>
+                                </li>
                             </ul>
                         </li>
                     @endif
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container -->
+            </div>
+        </div>
     </nav>
 </header>

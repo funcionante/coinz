@@ -115,4 +115,19 @@ class User extends Model implements AuthenticatableContract,
     {
         return date("d/m/Y", strtotime($value));
     }
+
+    /**
+     * Get the user's avatar.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getAvatarAttribute($value)
+    {
+        if ($value == null) {
+            return 'media/users/0.png';
+        }
+
+        return $value;
+    }
 }
