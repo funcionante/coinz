@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 
 class UsersController extends ApiController
 {
@@ -30,7 +31,7 @@ class UsersController extends ApiController
      */
     public function getProfile($id)
     {
-        $user = User::findorFail($id, ['id', 'name', 'email', 'level', 'created_at']);
+        $user = User::findorFail($id, ['id', 'name', 'email', 'avatar', 'level', 'created_at']);
 
         $user->nCoins = Auth::user()->copies()->count();
         $collection = $this->getUserCollection(Auth::id());
@@ -56,7 +57,23 @@ class UsersController extends ApiController
      */
     public function patchUpdate(Request $request)
     {
-        Auth::user()->update($request->all());
+        $user = Auth::user();
+        $user->update($request->all());
+
+        $image = $request->file('avatar');
+        if($image != null) {
+            // The convention for image name of the coin is "id.jpg".
+            $file = 'media/users/' . ($user->id) . '.jpg';
+
+            // To unify all the images, they are limited to 300x300 pixels and converted to JPEG.
+            Image::make($image)
+                ->fit(300)
+                ->save($file);
+
+            $user->avatar = $file;
+            $user->save();
+        }
+
 
         Session::flash('alert-message', 'Perfil editado com sucesso.');
         Session::flash('alert-type', 'alert-success');

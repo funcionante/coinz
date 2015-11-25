@@ -19,7 +19,7 @@
         </div>
         <div class="widget-user-image">
             @if($user->avatar != null)
-                <img class="img-circle" src="{{ url($coin->avatar) }}" alt="Imagem de perfil">
+                <img class="img-circle" src="{{ url($user->avatar) }}" alt="Imagem de perfil">
             @else
                 <img class="img-circle" src="{{  asset('/media/users/0.png') }}" alt="Sem imagem de perfil">
             @endif

@@ -6,13 +6,21 @@
 @section('content')
 
     <div class="box box-default">
-        {!! Form::model($user, ['method' => 'PATCH', 'action' => ['UsersController@patchUpdate'], 'class' => 'form-horizontal']) !!}
+        {!! Form::model($user, ['method' => 'PATCH', 'action' => ['UsersController@patchUpdate'], 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
         <div class="box-body">
             <div class="form-group">
                 {!! Form::label('name', 'Nome', ['class' => 'col-sm-2 control-label']) !!}
                 <div class="col-sm-10">
                     {!! Form::input("text", 'name') !!}
                     <p class="help-block">O teu nome ou alcunha.</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('avatar', 'Avatar', ['class' => 'col-sm-2 control-label']) !!}
+                <div class="col-sm-10">
+                    {!! Form::file('avatar') !!}
+                    <p class="help-block">(Opcional) A tua imagem de perfil.</p>
                 </div>
             </div>
 

@@ -16,11 +16,11 @@ class CreateCoinsTable extends Migration
             $table->increments('id');
             $table->integer('currency_id')->unsigned();
             $table->integer('country_id')->unsigned();
-            $table->float('value',6,2);
+            $table->float('value', 6, 2);
             $table->boolean('commemorative');
             $table->text('description');
-            $table->string('img_front',30);
-            $table->string('img_back',30);
+            $table->string('img_front', 30)->nullable();
+            $table->string('img_back', 30)->nullable();
             $table->integer('user_id')->unsigned();
             $table->tinyInteger('stat');
             $table->timestamps();

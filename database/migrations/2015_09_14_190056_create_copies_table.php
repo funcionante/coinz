@@ -19,8 +19,8 @@ class CreateCopiesTable extends Migration
             $table->integer('year');
             $table->tinyInteger('state');
             $table->text('observations');
-            $table->string('img_front',30);
-            $table->string('img_back',30);
+            $table->string('img_front', 30)->nullable();
+            $table->string('img_back', 30)->nullable();
             $table->tinyInteger('stat');
             $table->timestamps();
 
