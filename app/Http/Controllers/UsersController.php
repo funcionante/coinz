@@ -33,8 +33,8 @@ class UsersController extends ApiController
     {
         $user = User::findorFail($id, ['id', 'name', 'email', 'avatar', 'level', 'created_at']);
 
-        $user->nCoins = Auth::user()->copies()->count();
-        $collection = $this->getUserCollection(Auth::id());
+        $user->nCoins = $user->copies()->count();
+        $collection = $this->getUserCollection($user->id);
 
         return view('users.show', compact('user', 'collection'));
     }

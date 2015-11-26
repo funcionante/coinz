@@ -18,9 +18,16 @@
 
             <div class="form-group">
                 {!! Form::label('avatar', 'Avatar', ['class' => 'col-sm-2 control-label']) !!}
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                     {!! Form::file('avatar') !!}
                     <p class="help-block">(Opcional) A tua imagem de perfil.</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <img src="{{ url($user->avatar) }}">
+                    <p class="help-block">Avatar atual.</p>
                 </div>
             </div>
 

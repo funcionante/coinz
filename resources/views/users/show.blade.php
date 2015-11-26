@@ -7,7 +7,7 @@
 
     <div class="box box-widget widget-user">
         <div class="widget-user-header bg-aqua-active">
-            @if(Request::user()->id == $user->id)
+            @if(Request::user() and Request::user()->id == $user->id)
                 <div class="pull-right">
                     <a href="{{ action('UsersController@getEdit') }}" class="btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar perfil
