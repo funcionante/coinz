@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -55,7 +56,7 @@ class UsersController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function patchUpdate(Request $request)
+    public function patchUpdate(ProfileRequest $request)
     {
         $user = Auth::user();
         $user->update($request->all());

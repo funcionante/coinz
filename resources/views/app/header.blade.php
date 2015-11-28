@@ -48,7 +48,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="{{ action('UsersController@getProfile', Auth::id()) }}" class="btn btn-default btn-flat">Ver Perfil</a>
+                                        <a href="{{ action('UsersController@getProfile', Auth::id()) }}" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ url('/auth/logout') }}" class="btn btn-default btn-flat">Sair</a>
