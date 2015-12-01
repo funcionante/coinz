@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'privacy'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -66,7 +66,7 @@ class User extends Model implements AuthenticatableContract,
     }
 
     /**
-     * Set a user's account to verified state.
+     * Set the user's account to verified state.
      */
     public function setVerified()
     {
@@ -76,7 +76,7 @@ class User extends Model implements AuthenticatableContract,
     }
 
     /**
-     * Check if a user's account is verified.
+     * Check if the user's account is verified.
      */
     public function isVerified()
     {
@@ -84,11 +84,19 @@ class User extends Model implements AuthenticatableContract,
     }
 
     /**
-     * Check if a user is a manager.
+     * Check if the user is a manager.
      */
     public function isManager()
     {
         return $this->attributes['level'] > 1;
+    }
+
+    /**
+     * Check if the user's profile is private.
+     */
+    public function isPrivate()
+    {
+        return $this->attributes['privacy'] == 1;
     }
 
     /**

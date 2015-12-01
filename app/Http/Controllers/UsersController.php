@@ -15,6 +15,16 @@ use Intervention\Image\Facades\Image;
 class UsersController extends ApiController
 {
     /**
+     * Create a new users controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('private', ['only' => 'getProfile']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

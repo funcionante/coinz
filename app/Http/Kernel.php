@@ -32,5 +32,6 @@ class Kernel extends HttpKernel
         'owner' => \App\Http\Middleware\AbortIfNotOwner::class,
         'verified' => \App\Http\Middleware\RedirectIfNotVerified::class,
         'manager' => \App\Http\Middleware\AbortIfNotManager::class,
+        'private' => \App\Http\Middleware\AbortIfPrivate::class,
     ];
 }

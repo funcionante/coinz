@@ -31,6 +31,14 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                {!! Form::label('privacy', 'Privacidade', ['class' => 'col-sm-2 control-label']) !!}
+                <div class="col-sm-10">
+                    {!! Form::select('privacy', ['0' => 'Público', '1' => 'Privado'], null, ['class' => 'form-control']) !!}
+                    <p class="help-block">Altera a visibilidade do teu perfil.</p>
+                </div>
+            </div>
+
             <div class="box-footer col-sm-10 col-sm-offset-2">
                 {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
             </div>
