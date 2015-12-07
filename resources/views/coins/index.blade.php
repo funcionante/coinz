@@ -22,6 +22,7 @@
             <div class="box-header with-border">
                 <a class="anchor" name="{{ $country[0]->name_pt }}"></a>
                 <h3 class="box-title">{{ $country[0]->name_pt }}</h3>
+                <a href="#" class="pull-right glyphicon glyphicon-chevron-up" title="Ir para o topo da página"></a>
             </div>
             <div class="box-body">
 
