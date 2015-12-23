@@ -62,8 +62,9 @@
                                     </td>
                                     <td>{{ $copy->observations }}</td>
                                     <td>
-                                        <a href="{{ action('CopiesController@edit', $copy->id) }}" class="btn btn-sm glyphicon glyphicon-pencil" title="editar"></a>
-                                        <a href="{{ action('CopiesController@destroy', [$copy->id]) }}" data-confirm="Tens a certeza que queres eliminar este exemplar?" data-token="{{csrf_token()}}" data-method="delete" class="btn btn-sm glyphicon glyphicon-remove" title="eliminar exemplar"></a>
+                                        <a href="{{ action('CopiesController@edit', $copy->id) }}" class="small glyphicon glyphicon-pencil" title="editar exemplar"></a>
+                                        &nbsp;
+                                        <a href="{{ action('CopiesController@destroy', [$copy->id]) }}" data-confirm="Tens a certeza que queres eliminar este exemplar?" data-token="{{csrf_token()}}" data-method="delete" class="small glyphicon glyphicon-remove" title="eliminar exemplar"></a>
                                     </td>
                                 </tr>
                             @endforeach

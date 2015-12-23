@@ -34,8 +34,8 @@
         <div class="col-lg-3 col-xs-6">
             <div class="small-box bg-blue-gradient">
                 <div class="inner">
-                    <h3>{{ $nCopiesUser }}</h3>
-                    <p>Exemplares adicionados por ti</p>
+                    <h3>{{ $nUserCopies }}</h3>
+                    <p>Exemplares adicionados por mim</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-user"></i>
@@ -62,7 +62,7 @@
         <div class="col-lg-6">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Moedas mais recentes</h3>
+                    <h3 class="box-title">Exemplares mais recentes</h3>
                 </div>
                 <div class="box-body">
                     <table class="table table-striped">
@@ -75,12 +75,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($coins as $coin)
+                        @foreach($allCopies as $copy)
                             <tr>
-                                <td>{{ $coin->currency }}</td>
-                                <td>{{ $coin->country }}</td>
-                                <td>{{ $coin->value }}</td>
-                                <td>{{ date("d/m/Y", strtotime($coin->date)) }}</td>
+                                <td>{{ $copy->currency }}</td>
+                                <td>{{ $copy->country }}</td>
+                                <td>{{ $copy->value }}</td>
+                                <td>{{ date("d/m/Y", strtotime($copy->date)) }}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -92,7 +92,7 @@
         <div class="col-lg-6">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Os teus exemplares mais recentes</h3>
+                    <h3 class="box-title">Os meus exemplares mais recentes</h3>
                 </div>
                 <div class="box-body">
                     <table class="table table-striped">
@@ -105,12 +105,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($copies as $copy)
+                        @foreach($userCopies as $copy)
                             <tr>
                                 <td>{{ $copy->currency }}</td>
                                 <td>{{ $copy->country }}</td>
                                 <td>{{ $copy->value }}</td>
                                 <td>{{ date("d/m/Y", strtotime($copy->date)) }}</td>
+                                <td>
+                                    <a href="{{ action('CoinsController@show', $copy->id) }}" class="small glyphicon glyphicon-eye-open" title="ver"></a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
