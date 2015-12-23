@@ -40,7 +40,7 @@
 
     <nav>
         <ul class="pagination" id="list">
-            <li class="active"><a><span class="glyphicon glyphicon-search"></span></a></li>
+            <li class="active"><a onclick="drawTable()" id="draw-link"><span class="glyphicon glyphicon-search"></span></a></li>
         </ul>
     </nav>
 
