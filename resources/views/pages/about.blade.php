@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title', 'Sobre')
-@section('description', 'Versão 0.2')
+@section('description', 'Versão 0.3')
 
 @section('content')
 
@@ -41,7 +41,7 @@
                 </div>
                 <div class="box-body">
                     <p>Atualmente o Coinz encontra-se em fase experimental, tendo apenas algumas funcionalidades básicas e muitos erros para corrigir.</p>
-                    <table class="table table-striped table-hover ">
+                    <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -64,7 +64,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>0.2 <span class="label label-info">Atual</span></td>
+                            <td>0.2</td>
                             <td>16 de Novembro de 2015</td>
                             <td>
                                 <ul>
@@ -79,11 +79,13 @@
                         </tr>
                         <tr>
                             <td>0.3</td>
-                            <td>Brevemente</td>
+                            <td>23 de Dezembro de 2015</td>
                             <td>
                                 <ul>
-                                    <li>Possibilidade de visualizar e editar perfil do utilizador.</li>
-                                    <li>...</li>
+                                    <li>Possibilidade de visualizar e editar o perfil do utilizador.</li>
+                                    <li>A coleção do utilizador pode agora ser pública ou privada.</li>
+                                    <li>Adicionada uma página inicial com um resumo do conteúdo da aplicação.</li>
+                                    <li>Melhorias gerais na navegação entre as páginas.</li>
                                 </ul>
                             </td>
                         </tr>
